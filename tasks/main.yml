@@ -1,0 +1,74 @@
+---
+#####################################
+### Create OUs
+#####################################
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Objects
+    path: "DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Accounts
+    path: "OU=Objects,DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Computer
+    path: "OU=Objects,DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Groups
+    path: "OU=Objects,DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: 02_Administration
+    path: "OU=Computer,OU=Objects,DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: 03_Environment
+    path: "OU=Computer,OU=Objects,DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: FatClient
+    path: "OU=03_Environment,OU=Computer,OU=Objects,DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: RDSH
+    path: "OU=03_Environment,OU=Computer,OU=Objects,DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: User
+    path: "OU=Accounts,OU=Objects,DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true
+
+- name: Ensure OU is present & protected
+  community.windows.win_domain_ou:
+    name: Admins
+    path: "OU=Accounts,OU=Objects,DC=training,DC=democloud,DC=local"
+    state: present
+    protected: true

@@ -5,70 +5,50 @@
 
 - name: Ensure OU is present & protected
   community.windows.win_domain_ou:
-    name: Objects
+    name: '{{ item }}'
     path: "DC=dt,DC=training"
     state: present
     protected: true
+  loop:
+     - Objects
 
 - name: Ensure OU is present & protected
   community.windows.win_domain_ou:
-    name: Accounts
+    name: '{{ item }}'
     path: "OU=Objects,DC=dt,DC=training"
     state: present
     protected: true
+  loop:
+     - Computer
+     - Groups
+     - Accounts
 
 - name: Ensure OU is present & protected
   community.windows.win_domain_ou:
-    name: Computer
-    path: "OU=Objects,DC=dt,DC=training"
-    state: present
-    protected: true
-
-- name: Ensure OU is present & protected
-  community.windows.win_domain_ou:
-    name: Groups
-    path: "OU=Objects,DC=dt,DC=training"
-    state: present
-    protected: true
-
-- name: Ensure OU is present & protected
-  community.windows.win_domain_ou:
-    name: 02_Administration
+    name: '{{ item }}'
     path: "OU=Computer,OU=Objects,DC=dt,DC=training"
     state: present
     protected: true
+  loop:
+     - 02_Administration
+     - 03_Environment
 
 - name: Ensure OU is present & protected
   community.windows.win_domain_ou:
-    name: 03_Environment
-    path: "OU=Computer,OU=Objects,DC=dt,DC=training"
-    state: present
-    protected: true
-
-- name: Ensure OU is present & protected
-  community.windows.win_domain_ou:
-    name: FatClient
+    name: '{{ item }}'
     path: "OU=03_Environment,OU=Computer,OU=Objects,DC=dt,DC=training"
     state: present
     protected: true
+  loop:
+     - FatClient
+     - RDSH
 
 - name: Ensure OU is present & protected
   community.windows.win_domain_ou:
-    name: RDSH
-    path: "OU=03_Environment,OU=Computer,OU=Objects,DC=dt,DC=training"
-    state: present
-    protected: true
-
-- name: Ensure OU is present & protected
-  community.windows.win_domain_ou:
-    name: User
+    name: '{{ item }}'
     path: "OU=Accounts,OU=Objects,DC=dt,DC=training"
     state: present
     protected: true
-
-- name: Ensure OU is present & protected
-  community.windows.win_domain_ou:
-    name: Admins
-    path: "OU=Accounts,OU=Objects,DC=dt,DC=training"
-    state: present
-    protected: true
+  loop:
+     - User
+     - Admins
